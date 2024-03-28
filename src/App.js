@@ -1,16 +1,10 @@
-import { Router, Routes, Route } from 'react-router-dom';
-import RecruiterLogin from './components/Recruiter/RecruiterLogin';
+import React, { Suspense } from "react";
+import RecruiterRoutes from './routes/RecruiterRoutes';
 function App() {
   return (
-    <div>
-        <Router>
-        <Routes>
-        <Route path='/' exact component={RecruiterLogin} />
-        </Routes>
-        </Router>
-
-
-    </div>
+    <Suspense>
+      <RecruiterRoutes />
+    </Suspense>
   );
 }
 
