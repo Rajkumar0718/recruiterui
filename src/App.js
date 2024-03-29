@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import { Suspense } from 'react';
 import RecruiterRoutes from './routes/RecruiterRoutes';
 function App() {
   return (
