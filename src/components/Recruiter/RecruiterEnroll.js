@@ -4,7 +4,6 @@ import { isEmpty, isValidEmail, isValidMobileNo } from '../../utils/Validation';
 import axios from 'axios'
 import { toast } from 'react-toastify';
 import { TextField } from "@mui/material";
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -245,7 +244,7 @@ const RecruiterEnroll = () => {
       <div class="" style={{ height: "600px", overflowY: "scroll", overflowX: "hidden" }}>
         <div class="border" >
           <div class="panel panel-default" style={{ paddingLeft: '230px', paddingRight: '230px', paddingBottom: '60px' }}>
-            <div class="panel-heading">
+            <div class="panel-heading" >
               <h4 class="panel-title" style={{ textAlign: 'center', paddingTop: '10px', paddingBottom: '10px' }}>Panelist Enrollment Form</h4>
             </div>
             <div class="panel-body">

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import '../../assets/css/AdminDashboard.css'
+
 // import DateFnsUtils from '@date-io/date-fns';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-import { errorHandler } from '../../api/Api';
-import icon from '../../assets/images/LOGO.svg';
+import { authHeader, errorHandler } from '../../api/Api';
 import _ from "lodash";
-import { withLocation } from '../../utils/CommonUtils';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
@@ -14,13 +13,10 @@ import { TextField } from "@mui/material";
 import dayjs from 'dayjs';
 import { renderTimeViewClock } from '@mui/x-date-pickers/timeViewRenderers';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import EnrollmentCompletePopup from './EnrollmentCompletePopup';
-class TimeSlotEnrollment extends Component {
+
+export default class TimeSlot extends Component {
 
   state = {
-    isDisable: true,
-    openModal: false,
-    openModalAdd: false,
     week: ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'],
     toDate: new Date(),
     fromDate: new Date(),
@@ -51,33 +47,20 @@ class TimeSlotEnrollment extends Component {
   }
 
   componentDidMount() {
-
     let user = JSON.parse(sessionStorage.getItem("user"));
-    if (user != null) {
-      let id = user.id;
-      this.setState({ recruiterId: id })
-      axios.get(`/api1/timeSlot/list?recruiterId=${id}`)
-        .then(mur => {
-          const timeSlot = this.state.timeSlot;
-          if (mur.data.response.length != 0) {
-            this.setState({ isDisable: false });
-          }
-          timeSlot.selectedDays = mur.data.response;
-          this.setState({ timeSlot: timeSlot });
-        })
-    }
-    else {
-      this.props.navigate('/panelist/login');
-    }
-  }
-
-  skipHandle = () => {
-    this.onCloseModalAdd();
-    toast.success("Successfully Enrolled")
+    let id = user.id;
+    this.setState({ recruiterId: id })
+    axios.get(`/api1/timeSlot/list?recruiterId=${id}`, { headers: authHeader() })
+      .then(mur => {
+        const timeSlot = this.state.timeSlot;
+        timeSlot.selectedDays = mur.data.response;
+        this.setState({ timeSlot: timeSlot });
+        console.log(mur)
+      })
   }
 
   addSlot = () => {
-    axios.post(`/api1/timeSlot/add`, this.state)
+    axios.post(`/api1/timeSlot/add`, this.state, { headers: authHeader() })
       .then(res => {
         toast.success("Updated Successfully!")
         this.resetState()
@@ -86,7 +69,6 @@ class TimeSlotEnrollment extends Component {
         errorHandler(error);
       });
   }
-
 
   resetState() {
     this.setState({
@@ -106,46 +88,8 @@ class TimeSlotEnrollment extends Component {
   }
 
   handleTimeChange = (e, key, value) => {
-
     this.setState({ [value]: e.valueOf() })
   }
-
-  conformationHandle = () => {
-    if (!this.state.openModalAdd) {
-      document.addEventListener('click', this.handleOutsideClick, false);
-    } else {
-      document.removeEventListener('click', this.handleOutsideClick, false);
-    }
-    this.setState({ openModalAdd: !this.state.openModalAdd });
-  };
-
-  onClickOpenModel = (data) => {
-    if (!this.state.openModal) {
-      document.addEventListener("click", this.handleOutsideClick, false);
-    } else {
-      document.removeEventListener("click", this.handleOutsideClick, false);
-    }
-    this.setState({ openModal: !this.state.openModal });
-    this.setState({ modalSection: data });
-  };
-
-  handleOutsideClick = (e) => {
-    if (e.target.className === "modal fade show") {
-      if (this.state.openModal === true) {
-        this.setState({ openModal: !this.state.openModal });
-        this.componentDidMount();
-      }
-      else {
-        this.setState({ openModalAdd: !this.state.openModalAdd });
-        this.componentDidMount();
-      }
-    }
-  };
-
-  onCloseModalAdd = () => {
-    sessionStorage.clear();
-    this.props.navigate('/panelist/login');
-  };
 
   concat = () => {
     const temp = this.state.slots;
@@ -218,13 +162,6 @@ class TimeSlotEnrollment extends Component {
   render() {
     return (
       <main class="main-content bcg-clr">
-        <nav className='navbar navbar-expand-lg navbar-light bg-light border-bottom' style={{ paddingTop: '0px' }}>
-          <img src={icon} width={130}></img>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
-            </ul>
-          </div>
-        </nav>
         <div>
           <div class="container-fluid cf-1">
             <div className="card-header-new">
@@ -238,8 +175,8 @@ class TimeSlotEnrollment extends Component {
                   <div class="send-header">
                     <div class="mb-3">
                       <label class="form-label">Time (hrs)</label>
-                      <div style={{ marginLeft: '155px', marginTop: '-50px', display:"flex",flexDirection:"row"}}>
-                        <div  style={{position:"relative",right:"3rem",width:"13rem"}}>
+                      <div style={{ marginLeft: '155px', marginTop: '-50px' }}>
+                        <div>
                           <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <DemoContainer components={['TimePicker']}>
                               <TimePicker
@@ -260,8 +197,8 @@ class TimeSlotEnrollment extends Component {
                             </DemoContainer>
                           </LocalizationProvider>
                         </div>
-                        <div style={{position:"relative",right:"1rem",width:"13rem"}} >
-                          <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <div style={{ marginTop: '-48px', marginLeft: '220px' }}>
+                           <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <DemoContainer components={['TimePicker']}>
                               <TimePicker
                                 label="End-Time"
@@ -281,7 +218,7 @@ class TimeSlotEnrollment extends Component {
                             </DemoContainer>
                           </LocalizationProvider>
                         </div>
-                        <div style={{position:"relative",top:"1.5rem"}}>
+                        <div style={{ marginLeft: '450px', marginTop: '-30px' }}>
                           {_.map(this.state.week, (day, index) => {
                             return <span className={`${this.isSelected(day) === "true" ? "week" : "notSelected"}`} onClick={() => this.handleClick(day, index)}>{day}</span>
                           })}
@@ -302,21 +239,6 @@ class TimeSlotEnrollment extends Component {
                         {this.showTable()}
                       </table>
                     </div>) : null}
-                  <div className="row">
-                    <div className="col-md-10">
-                    </div>
-                    <div className="col-md-2">
-                      <button onClick={this.skipHandle} className="btn btn-primary" >Skip</button>
-                      <button onClick={this.conformationHandle} className="btn btn-primary" disabled={this.state.isDisable} style={{ marginLeft: '15px' }}>Submit</button>
-                      {this.state.openModalAdd ? (
-                        <EnrollmentCompletePopup
-                          onCloseModalAdd={this.onCloseModalAdd}
-                        />
-                      ) : (
-                        ""
-                      )}
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -326,4 +248,3 @@ class TimeSlotEnrollment extends Component {
     );
   }
 }
-export default withLocation(TimeSlotEnrollment);
