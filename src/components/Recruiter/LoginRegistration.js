@@ -22,7 +22,7 @@ const LoginRegistration = () => {
       .then(res => {
         if (res.data.response == null) {
           toast.warning("Link already used")
-          navigation('/panelist');
+          navigation('/');
         }
         else {
           setUser(res.data.response)
@@ -35,7 +35,7 @@ const LoginRegistration = () => {
     axios.post(`/api1/recruiter/set/password`, user, { headers: { Authorization: "Bearer ".concat(`${token}`) } })
       .then(res => {
         toast.success("Password Reset Successfully!")
-        navigation('/panelist');
+        navigation('/');
       })
       .catch(error => {
         errorHandler(error);

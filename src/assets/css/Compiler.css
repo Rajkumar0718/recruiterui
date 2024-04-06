@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baskervville&family=DM+Sans&family=Fira+Sans:wght@200&display=swap');
+
+.language {
+    display: inline;
+  }
+  .heading {
+    font-size: 20px;
+  }
+  #source {
+    background: #cccccc52;
+    font-size: 15px;
+    resize: vertical;
+    font-family: monospace!important;
+  }
+  #input {
+    background: #cccccc52;
+    width: 45.6%;
+    height: 17vh;
+    resize: vertical;
+    font-size: 17px;
+  }
+
+  #output {
+    background: #cccccc52;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 7.6%;
+    font-size: 18px;
+    right: 0;
+    resize: none;
+    overflow-y: auto;
+  }
+
+  .language {
+    width: 150px;
+  }
+
+  .split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+
+  .left {
+    left: 0;
+    /* top: 60px; */
+    background-color: white;
+    padding-left: 20px;
+  }
+
+  .right {
+    right: 0;
+    /* top: 60px; */
+    background-color: black;
+    padding-left: 10px;
+  }
+  .row-f {
+    display: flex;
+    flex-wrap: wrap;
+    /* margin-top: 45px; */
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+
+  .ace_editor,
+.ace_editor div * {
+  font-family: Menlo, Consolas, "DejaVu Sans Mono", Courier, monospace;
+}
+
+.ace_editor {
+  font-family: Menlo, Consolas, "DejaVu Sans Mono", Courier, monospace;
+  line-height: 1.5;
+}
+.test-case {
+    margin-top: 10px;
+    width: 95%;
+    padding-left: 10px;
+}
+.result {
+  margin-top: 10px;
+  width: 95%;
+  padding-left: 10px;
+  background-color: black;
+}
+
+.fixed-button {
+  position: fixed;
+  bottom: 10px;
+  right: 54%;
+}
+
+/* .instruction .div *{
+  font-family:monospace !important;
+} */
+
+  .notify {
+    position: relative;
+    top: -3.2em;
+    left: 1.4em;
+    border: 1px solid black;
+    border-radius: 50%;
+    padding: .15em .3em;
+    font-size: 75%;
+    font-weight: bold;
+}
+
+.notify-bell{
+    color: #343a40;
+    background-color: #ffffff;
+    border-color: #fff;
+    padding-top: 12px;
+}
+
+.notify-bell:hover{
+    color: #a9a9a9;
+}
+
+.jodit-wysiwyg{
+    max-height: 104px;
+}
+
+.counter-bgc-red{
+    background-color: #ff3c7e;
+    border-radius: 50px;
+    color: #fff;
+    font-size: 10px;
+    line-height: 1;
+    padding: 3px 5.5px;
+    position: absolute;
+    right: -5px;
+    top: 5px;
+}
+
+.required{
+    content: "*";
+    color: red;
+}
+
+.ace_cursor{
+    opacity: 0;
+  }
+
+  .btn-previous{
+    font-size: 15px;
+    width: 80px;
+    height: 30px;
+    color: white;
+    background: steelblue;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border: none;
+}
+
+.btn-next{
+  font-size: 15px;
+  width: 80px;
+  height: 30px;
+  color: white;
+  background: steelblue;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border: none;
+}

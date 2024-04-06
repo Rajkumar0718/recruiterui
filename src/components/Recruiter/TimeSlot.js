@@ -175,8 +175,8 @@ export default class TimeSlot extends Component {
                   <div class="send-header">
                     <div class="mb-3">
                       <label class="form-label">Time (hrs)</label>
-                      <div style={{ marginLeft: '155px', marginTop: '-50px' }}>
-                        <div>
+                      <div style={{ marginLeft: '155px', marginTop: '-50px', display:"flex",flexDirection:"row"}}>
+                      <div  style={{position:"relative",right:"3rem",width:"13rem"}}>
                           <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <DemoContainer components={['TimePicker']}>
                               <TimePicker
@@ -197,7 +197,7 @@ export default class TimeSlot extends Component {
                             </DemoContainer>
                           </LocalizationProvider>
                         </div>
-                        <div style={{ marginTop: '-48px', marginLeft: '220px' }}>
+                        <div style={{position:"relative",right:"1rem",width:"13rem"}} >
                            <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <DemoContainer components={['TimePicker']}>
                               <TimePicker
@@ -218,13 +218,13 @@ export default class TimeSlot extends Component {
                             </DemoContainer>
                           </LocalizationProvider>
                         </div>
-                        <div style={{ marginLeft: '450px', marginTop: '-30px' }}>
+                        <div style={{position:"relative",top:"1.5rem"}}>
                           {_.map(this.state.week, (day, index) => {
                             return <span className={`${this.isSelected(day) === "true" ? "week" : "notSelected"}`} onClick={() => this.handleClick(day, index)}>{day}</span>
                           })}
                         </div>
                       </div>
-                      <div type="button" style={{ marginLeft: '1100px', marginTop: '-25px' }} onClick={() => this.addSlot()}><i class="fa fa-plus-circle" style={{ color: '#007bff' }}></i></div>
+                      <div type="button" style={{ marginLeft: '1100px', position:"relative",bottom:"35px" }} onClick={() => this.addSlot()}><i class="fa fa-plus-circle" style={{ color: '#007bff' }}></i></div>
                     </div>
                   </div>
                   {this.state.timeSlot.selectedDays.length > 0 ? (

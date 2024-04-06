@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { authHeader, errorHandler } from '../../api/Api';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import CkEditor from "../../components/Recruiter/CkEditor"
 import styled from 'styled-components';
 const StyledCKEditorWrapper = styled.div`
   .ck-editor__editable {
@@ -48,9 +47,8 @@ const PanelistPopup = (props) => {
         errorHandler(error);
       });
   };
-  const handleChange = (event, editor) => {
-    const data = editor.getData();
-    setPanelistFeedBack(data);
+  const handleChange = (newData) => {
+    setPanelistFeedBack(newData);
 };
   return (
     <div className="modal fade show" id="myModal" role="dialog" style={{ paddingRight: '15px', display: 'block', backgroundColor: 'rgba(0,0,0,0.4)' }} aria-hidden="true">
@@ -132,18 +130,7 @@ const PanelistPopup = (props) => {
               <hr></hr>
               <label>Feedback:</label>
               <StyledCKEditorWrapper>
-              <CKEditor
-                editor={ClassicEditor}
-                data={panelistFeedBack || ""}
-                onInit={editor => {
-
-                }}
-                onChange={handleChange}
-                config={{
-                  removePlugins: ['elementspath'],
-                  resize_enabled: false
-                }}
-              />
+              <CkEditor data={panelistFeedBack} onChange={handleChange} />
               </StyledCKEditorWrapper>
               <div className="form-group row" style={{ marginTop: '10px' }}>
                 <div className="col-md-10"></div>

@@ -948,15 +948,79 @@ background-color: rgb(35, 117, 143);
 
   .nav-link:hover {
     background-color:#4b59b5 ;
-    border-radius: 5px; /* Change background color on hover */
-  }
+    border-radius: 5px;
+}
 
   /* Override text-decoration for week header cells in FullCalendar */
 .fc-daygrid-day-number, .fc-col-header-cell-cushion{
   text-decoration: none !important;
 }
-
+.fc-dayGridMonth-button {
+position: relative;
+right: 1rem;
+border-radius: 0.5rem !important;
+background-color: rgb(235, 236, 242) !important;
+color: #111111 !important;
+border-color: rgb(59, 72, 158) !important;
+border-width: 2px !important;
+box-shadow:none !important;
+}
+.fc-listMonth-button {
+  border-radius: 0.5rem !important;
+  background-color: rgb(235, 236, 242) !important;
+  color: #111111 !important;
+  border-color: rgb(59, 72, 158) !important;
+  border-width: 2px !important;
+  box-shadow:none !important;
+}
+.fc-today-button{
+position: relative;
+left: 2rem;
+border-radius: 0.5rem !important;
+background-color: rgb(235, 236, 242) !important;
+color: #111111 !important;
+border-color: rgb(59, 72, 158) !important;
+border-width: 2px !important;
+opacity: 1.65 !important;
+box-shadow:none !important;
+}
+.fc-prev-button{
+  border-radius: 0.5rem !important;
+  background-color: rgb(235, 236, 242) !important;
+  color: #111111 !important;
+  border-color: rgb(59, 72, 158) !important;
+  border-width: 2px !important;
+  box-shadow:none !important;
+}
+.fc-next-button{
+  position: relative;
+left: 1rem;
+  border-radius: 0.5rem !important;
+  background-color: rgb(235, 236, 242) !important;
+  color: #111111 !important;
+  border-color: rgb(59, 72, 158) !important;
+  border-width: 2px !important;
+  box-shadow:none !important;
+}
 /* .fc-col-header-cell-cushion{
   text-decoration: none !important;
 
 } */
+
+.event-display {
+  display: flex;
+  align-items: center;
+  font-family: 'montserrat';
+  font-weight: 600;
+}
+
+.event-display ul{
+  list-style: none;
+  margin: 0;
+  display: flex;
+  flex: 1;
+  /* max-width: 180px; */
+  overflow: hidden;
+  align-items: center;
+  padding-left: 8px;
+}
