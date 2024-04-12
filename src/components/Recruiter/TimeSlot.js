@@ -187,7 +187,7 @@ export default class TimeSlot extends Component {
                                 ampm={true}
                                 inputFormat="hh:mm"
                                 views={['hours', 'minutes']}
-                                minutesStep={5}
+                                // minutesStep={5}
                                 secondsStep={5}
                                 viewRenderers={{
                                   hours: renderTimeViewClock,
@@ -208,7 +208,7 @@ export default class TimeSlot extends Component {
                                 ampm={true}
                                 inputFormat="hh:mm"
                                 views={['hours', 'minutes']}
-                                minutesStep={5}
+                                // minutesStep={5}
                                 secondsStep={5}
                                 viewRenderers={{
                                   hours: renderTimeViewClock,

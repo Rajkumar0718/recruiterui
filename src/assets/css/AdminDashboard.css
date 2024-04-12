@@ -986,26 +986,37 @@ box-shadow:none !important;
 }
 .fc-prev-button{
   border-radius: 0.5rem !important;
-  background-color: rgb(235, 236, 242) !important;
-  color: #111111 !important;
-  border-color: rgb(59, 72, 158) !important;
+  background-color:rgb(59, 72, 158) !important;
+  color: white !important;
   border-width: 2px !important;
+  border: none !important;
   box-shadow:none !important;
 }
 .fc-next-button{
   position: relative;
-left: 1rem;
+  left: 1rem;
   border-radius: 0.5rem !important;
-  background-color: rgb(235, 236, 242) !important;
-  color: #111111 !important;
-  border-color: rgb(59, 72, 158) !important;
+  background-color: #fc3f06 !important;
+  color: white !important;
+  border: none !important;
   border-width: 2px !important;
   box-shadow:none !important;
+}
+.fc-today-button:hover {
+  background-color: rgb(59, 72, 158) !important;
+  color: #fff !important;
 }
 /* .fc-col-header-cell-cushion{
   text-decoration: none !important;
 
 } */
+
+.fc-button.fc-button-active {
+  background-color: rgb(59, 72, 158) !important;
+  color: #fff !important;
+ }
+
+
 
 .event-display {
   display: flex;
@@ -1024,3 +1035,45 @@ left: 1rem;
   align-items: center;
   padding-left: 8px;
 }
+
+
+ .separator {
+  color: white;
+  margin: 0 5px;
+ }
+ .profile-pic {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  position: relative;
+  right: 1rem;
+}
+
+
+
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-left: 10rem;
+}
+
+.user-info > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+
+}
+.vl {
+  border-left: 2px solid rgb(123, 135, 211) ;
+  height: 39px;
+  position: relative;
+  right: 1rem;
+}
+
+

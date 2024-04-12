@@ -136,8 +136,8 @@ const Dashboard = () => {
         <span><b>Job Description: </b>{event._def?.extendedProps?.desc?.replace(/(<([^>]+)>)/ig, '')}</span><br />
         <span><b>{!event.status ? 'Interview Link:' : 'Interview :'} </b>{!event.status ? <a href={event?._def?.extendedProps?.interviewLink} target="_blank">{event._def?.extendedProps?.interviewLink}</a> : (event.status == "Not_Show" ? <a>Not Show</a> : <a>Completed</a>)}</span><br />
         <button onClick={() => conformationHandle(event, showPopup)} style={{ cursor: 'pointer' }} className='btn btn-sm btn-primary'>Feedback</button>
-        {event.submittedExam ? <Link to={{ pathname: `/panelist/program/result/${event.candidateId}`, state: { candidateEmail: event.email, examId: event.examId } }} target={'_blank'}><button onClick={() => setLocal(event)} style={{ cursor: 'pointer', marginLeft: '10px' }} className='btn btn-sm btn-primary'>View Code</button></Link> : ''}
-        <button onClick={() => downloadResume(event.candidateId, event.title)} style={{ cursor: 'pointer', marginLeft: '10px' }} className='btn btn-sm btn-primary'><i class="fa fa-download"></i> Resume</button>
+        {event.submittedExam ? <Link to={{ pathname: `/panelist/program/result/${event?._def?.extendedProps?.candidateId}`, state: { candidateEmail: event.email, examId: event.examId } }} target={'_blank'}><button onClick={() => setLocal(event)} style={{ cursor: 'pointer', marginLeft: '10px' }} className='btn btn-sm btn-primary'>View Code</button></Link> : ""}
+        <button onClick={() => downloadResume(event?._def?.extendedProps?.candidateId, event.title)} style={{ cursor: 'pointer', marginLeft: '10px' }} className='btn btn-sm btn-primary'><i class="fa fa-download"></i> Resume</button>
       </span>
     )
   }
@@ -229,14 +229,13 @@ const Dashboard = () => {
                 const eve = event._def.extendedProps;
                 let { title } = event
                 return (
-                  // <h6 style={{ color: "black", fontSize: "15px", display: "list-item", listStylePosition: "inside" }}>{title}</h6>
                   <div className='event-display'>
                     <ul>
                       <li style={{ whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>
                         {title}
                       </li>
                     </ul>
-                    </div>
+                  </div>
                 )
               }
             }}

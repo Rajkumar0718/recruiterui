@@ -54,7 +54,7 @@ const RecruiterLogin = () => {
                   <form className="form-signin" style={{ textAlign: 'center' }} onSubmit={handleSubmit}>
                     <TextField className="m-2 col-10" name='email' onChange={handleChange} id="outlined-basic" label="Email" variant="outlined" />
                     <TextField className="m-2 col-10" type='password' name='password' onChange={handleChange} id="outlined-basic" label="Password" variant="outlined" />
-                    <button type="submit" className="btn btn-secondary col-10">Login</button>
+                    <button type="submit" className="btn btn-secondary col-10" style={{backgroundColor:"#3b489e"}}>Login</button>
                   </form>
                   <div style={{ textAlign: 'center' }} >
                     <div style={{ marginTop: '5px' }}>

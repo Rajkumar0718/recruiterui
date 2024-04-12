@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import '../../assets/css/Compiler.css';
 import _ from "lodash"
 import AceEditor from "react-ace";
-
 import "ace-builds/src-noconflict/ace";
 import "ace-builds/src-noconflict/ext-beautify";
 import "ace-builds/src-noconflict/ext-prompt";
@@ -10,7 +9,6 @@ import 'ace-builds/src-noconflict/mode-csharp';
 import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/mode-python";
 import "ace-builds/src-noconflict/theme-monokai";
-
 import CopyPasteContentModel from './CopyPasteContentModel';
 import axios from 'axios';
 import { authHeader, errorHandler } from '../../api/Api';

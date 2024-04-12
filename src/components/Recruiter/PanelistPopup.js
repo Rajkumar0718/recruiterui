@@ -53,10 +53,10 @@ const PanelistPopup = (props) => {
   return (
     <div className="modal fade show" id="myModal" role="dialog" style={{ paddingRight: '15px', display: 'block', backgroundColor: 'rgba(0,0,0,0.4)' }} aria-hidden="true">
       <div className="col-md-8" style={{ margin: 'auto' }}>
-        <div className="modal-content" style={{ borderStyle: 'solid', borderColor: '#808080' }}>
+        <div className="modal-content" style={{ borderStyle: 'solid', borderColor: '#808080' ,marginTop:"2rem"}}>
           <div className="modal-header" style={{ backgroundColor: '#808080', height: "4rem" }}>
             <h5 className="modal-title" style={{ color: 'white' }}>Feedback</h5>
-            <button type="button" onClick={props.onCloseModal} className="close" data-dismiss="modal" style={{ border: "none", position: "relative", bottom: "5px", height: "3.5rem", backgroundColor: '#808080' }}>&times;</button>
+            <button type="button" onClick={props.onCloseModal} className="close" data-dismiss="modal" style={{ border: "none", position: "relative", bottom: "5px", height: "2.5rem", backgroundColor: '#808080' }}>&times;</button>
           </div>
           <div className="row" style={{ margin: '10px' }}>
             <div className="col-md" style={{ maxHeight: '550px', overflowY: 'auto' }} >
@@ -130,7 +130,7 @@ const PanelistPopup = (props) => {
               <hr></hr>
               <label>Feedback:</label>
               <StyledCKEditorWrapper>
-              <CkEditor data={panelistFeedBack} onChange={handleChange} />
+              <CkEditor data={panelistFeedBack} onChange={handleChange()} />
               </StyledCKEditorWrapper>
               <div className="form-group row" style={{ marginTop: '10px' }}>
                 <div className="col-md-10"></div>
